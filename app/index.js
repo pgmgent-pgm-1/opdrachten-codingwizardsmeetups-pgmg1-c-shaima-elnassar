@@ -56,9 +56,10 @@ const meetups = [
           jobDescription: 'R&D Engineer',
           company: 'Corilus',
         },
-        description: 'Cloud development en monolithische applicaties vertegenwoordigen twee verschillende benaderingen van softwareontwikkeling en -architectuur. Monolithische apps zijn traditionele toepassingen waarbij alle functionaliteit in één enkele codebase en uitvoerbare eenheid wordt ondergebracht. In deze aanpak is de applicatie vaak omvangrijk en complex wat kan leiden tot uitdagingen bij schaalbaarheid en onderhoud. Aan de andere kant staat cloud development waarbij applicaties zijn opgebouwd met een microservices- of serverless-architectuur en draaien in de cloud. Dit maakt het mogelijk om de applicatie op te splitsen in kleine onafhankelijke services die afzonderlijk kunnen worden ontwikkeld geschaald en onderhouden. Hoewel monolithische apps eenvoudiger kunnen lijken om te ontwikkelen biedt cloud development voordelen zoals schaalbaarheid flexibiliteit en veerkracht. De keuze tussen deze benaderingen hangt af van de specifieke behoeften en doelstellingen van een project waarbij cloud development vaak de voorkeur geniet voor moderne schaalbare en onderhoudsarme applicaties.'
       
+        description: 'Cloud development en monolithische applicaties vertegenwoordigen twee verschillende benaderingen van softwareontwikkeling en -architectuur. Monolithische apps zijn traditionele toepassingen waarbij alle functionaliteit in één enkele codebase en uitvoerbare eenheid wordt ondergebracht. In deze aanpak is de applicatie vaak omvangrijk en complex wat kan leiden tot uitdagingen bij schaalbaarheid en onderhoud. Aan de andere kant staat cloud development waarbij applicaties zijn opgebouwd met een microservices- of serverless-architectuur en draaien in de cloud. Dit maakt het mogelijk om de applicatie op te splitsen in kleine onafhankelijke services die afzonderlijk kunnen worden ontwikkeld geschaald en onderhouden. Hoewel monolithische apps eenvoudiger kunnen lijken om te ontwikkelen biedt cloud development voordelen zoals schaalbaarheid flexibiliteit en veerkracht. De keuze tussen deze benaderingen hangt af van de specifieke behoeften en doelstellingen van een project waarbij cloud development vaak de voorkeur geniet voor moderne schaalbare en onderhoudsarme applicaties.'
       },
+      
       {
         title: 'SentEMO: Blitz in production',
         from: 1684344900000,
@@ -352,6 +353,7 @@ function generateStringForTime (programme) {
   }).join('\n')}
 
 const programmeString = generateStringForTime(meetups[0].programme)
+
       
 function generateStringForTime1 (programme) {
   return programme.map(timeStamp => {
@@ -361,22 +363,41 @@ function generateStringForTime1 (programme) {
   }).join('\n')}
 
 const programmeString1 = generateStringForTime(meetups[1].programme)
+
         
  function generatePlace(location) {
   const { street, number, postalCode, city } = location.address;
   let tmpStr = `${street}\n${number}\n${postalCode}\n${city}`;
- return tmpStr}
+ return tmpStr;}
 
  const location1 = generatePlace(meetups[0].location);
 
  function generatePlace2(location) {
   const { street, number, postalCode, city } = location.address;
   let tmpStr = `${street}\n${number}\n${postalCode}\n${city}`;
- return tmpStr}
+ return tmpStr;}
  const location2 = generatePlace2(meetups[1].location);
 
 
-        
+ 
+ function generateStringOrganizers (organizers) {
+  return organizers.map(item => {
+   const { name } = item;
+   let tmpStr = `${name}`;
+  return tmpStr;
+  })}
+
+const organizersString = generateStringOrganizers(meetups[0].organizers)
+
+function generateStringOrganizers (organizers) {
+  return organizers.map(item => {
+   const { name } = item;
+   let tmpStr = `${name}`;
+  return tmpStr;
+  })}
+
+const organizersString1 = generateStringOrganizers(meetups[1].organizers)
+
        
 
 
@@ -396,6 +417,11 @@ PROGRAMMA
 ${programmeString}
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ${location1}
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ORGANIZERS
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+${organizersString}
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 `
 }
 
