@@ -491,6 +491,15 @@ function generateOrganizer5(index1, index2) {
 
 const speaker5 = generateOrganizer4(1, 6);
 
+
+function generateReview2(meetups) {
+  return meetups.map(review => {
+    const { username, comment, rating } = review;
+    return `${rating} ${username} - ${comment}`;
+  }).join('\n-----------------------------------------------------------------------------------------------------------------------------------------\n');
+}
+const review2 = generateReview2(meetups[1].reviews)
+
 function generateStringForMeetup (meetups) {
   return `
 ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
@@ -568,7 +577,7 @@ ${meetups[1].programme[6].description}
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 RECENSIES 7.6 ✰
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
+${review2}
 `
 }
 
