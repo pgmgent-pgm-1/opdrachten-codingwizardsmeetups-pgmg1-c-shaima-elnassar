@@ -123,42 +123,42 @@ const meetups = [
     
       reviews:[{
         username: 'Alice123',
-        rating: '9',
+        rating: '✰✰✰✰✰✰✰✰✰',
         comment: 'Geweldige talks zeer informatief!',
       },
       {
         username: 'Bob456',
-        rating: '8',
+        rating: '✰✰✰✰✰✰✰✰',
         comment: 'Genoten van de verscheidenheid aan besproken onderwerpen.',
       },
       {
         username: 'Charlie789',
-        rating: '7',
+        rating: '✰✰✰✰✰✰✰',
         comment: 'Sommige talks waren beter dan andere.',
       },
       {
         username: 'David101',
-        rating: '10',
+        rating: '✰✰✰✰✰✰✰✰✰✰',
         comment: 'Absoluut fantastische talks!',
       },
       {
         username: 'Eve202',
-        rating: '6',
+        rating: '✰✰✰✰✰✰',
         comment: 'Zou meer interactieve sessies kunnen gebruiken',
       },
       {
         username: 'Frank303',
-        rating: '9',
+        rating: '✰✰✰✰✰✰✰✰✰',
         comment: 'Echt informatieve presentaties.',
       },
       {
         username: 'Grace404',
-        rating: '8',
+        rating: '✰✰✰✰✰✰✰✰',
         comment: 'Goed georganiseerd evenement maar een paar technische problemen.',
       },
       {
         username: 'Hannah505',
-        rating: '7',
+        rating: '✰✰✰✰✰✰✰',
         comment: 'Degelijke talks maar had meer diepgang verwacht.',
       }
       ]
@@ -296,42 +296,42 @@ const meetups = [
         
           reviews:[{
             username: 'Emma789',
-            rating: '9',
+            rating: '✰✰✰✰✰✰✰✰✰',
             comment: 'Interessante gesprekken zeer leerzaam!',
           },
           {
             username: 'Liam456',
-            rating: '7',
+            rating: '✰✰✰✰✰✰✰',
             comment: 'Genoten van de verschillende onderwerpen.',
           },
           {
             username: 'Olivia101',
-            rating: '9',
+            rating: '✰✰✰✰✰✰✰✰✰',
             comment: 'Fantastische presentaties zeer inspirerend!',
           },
           {
             username: 'Noah303',
-            rating: '7',
+            rating: '✰✰✰✰✰✰✰',
             comment: 'Goed georganiseerd evenement een paar kleine haperingen.',
           },
           {
             username: 'Ava202',
-            rating: '6',
+            rating: '✰✰✰✰✰✰',
             comment: 'Sommige talks konden interactiever zijn.',
           },
           {
             username: 'Mia404',
-            rating: '9',
+            rating: '✰✰✰✰✰✰✰✰✰',
             comment: 'Briljante talks niets dan lof!',
           },
           {
             username: 'Ethan505',
-            rating: '6',
+            rating: '✰✰✰✰✰✰',
             comment: 'Degelijke presentaties maar had meer diepgang verwacht.',
           },
           {
             username: 'Sophia123',
-            rating: '8',
+            rating: '✰✰✰✰✰✰✰✰',
             comment: 'Geweldige ervaring zeer informatief!',
           },
           ]
@@ -367,6 +367,7 @@ const programmeString1 = generateStringForTime(meetups[1].programme)
 
  const location1 = generatePlace(meetups[0].location);
 
+
  function generatePlace2(location) {
   const { street, number, postalCode, city } = location.address;
   let tmpStr = `${street}\n${number}\n${postalCode}\n${city}`;
@@ -384,6 +385,7 @@ const programmeString1 = generateStringForTime(meetups[1].programme)
   })}
 
 const organizersString = generateStringOrganizers(meetups[0].organizers)
+
 
 function generateStringOrganizers2 (organizers) {
   return organizers.map(item => {
@@ -404,6 +406,7 @@ function generateStringWebsites(organizers) {
   return websites;
 }
 const website1 = generateStringWebsites(meetups[0].organizers)
+
 
 function generateStringWebsites1(organizers) {
   const websites2 = organizers.map((organizer) => {
@@ -429,6 +432,7 @@ function generateOrganizer(index1, index2) {
 
 const speaker1 = generateOrganizer(0, 2);
 
+
 function generateOrganizer2(index1, index2) {
   const speakers = meetups[index1].programme[index2].speakers;
   if (speakers) {
@@ -442,7 +446,14 @@ function generateOrganizer2(index1, index2) {
 const speaker2 = generateOrganizer2(0, 5);
 
 
-       
+function generateReview1(meetups) {
+  return meetups.map(review => {
+    const { username, comment, rating } = review;
+    return `${rating} ${username} - ${comment}`;
+  }).join('\n-----------------------------------------------------------------------------------------------------------------------------------------\n');
+}
+const review1 = generateReview1(meetups[0].reviews)
+
 
 
 function generateStringForMeetup (meetups) {
@@ -477,7 +488,20 @@ ${meetups[0].programme[2].description}
 ${speaker2}
 ----------------------------------------------------------------------------------------------------------------------------------------
 ${meetups[0].programme[5].description}
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+RECENSIES 8.0 ✰
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+${review1}
 
+
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║ Meetup 02 | ${meetups[1].title}                                                                                                            ║ 
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+Datum: 19-10-2023
+Locatie: iO Campus Ghent
+Prijs: Gratis
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+${meetups[1].description}
 `
 }
 
