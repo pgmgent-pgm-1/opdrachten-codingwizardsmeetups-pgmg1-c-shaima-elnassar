@@ -343,18 +343,26 @@ const meetups = [
         }
         ];
 
-  
 
+        function generateStringForTime (programme) {
+          return programme.map(timeStamp => {
+            const { title, from, to } = timeStamp;
+          let tmpStr = `${new Date(from).getHours()}:${new Date(from).getMinutes()} - ${new Date(to).getHours()}:${new Date(to).getMinutes()} ${title}`;
+          return tmpStr;
+        }).join('\n')}
+        const programmeString = generateStringForTime(meetups[0].programme)
+      
+        function generateStringForTime1 (programme) {
+          return programme.map(timeStamp => {
+            const { title, from, to } = timeStamp;
+          let tmpStr = `${new Date(from).getHours()}:${new Date(from).getMinutes()} - ${new Date(to).getHours()}:${new Date(to).getMinutes()} ${title}`;
+          return tmpStr;
+        }).join('\n')}
+        const programmeString1 = generateStringForTime(meetups[1].programme)
 
+        
+       
 
-
-
-
-
-
-
-
-  
 
 function generateStringForMeetup (meetup, index) {
   return `
@@ -364,9 +372,17 @@ function generateStringForMeetup (meetup, index) {
 Datum: 17-05-2023
 Locatie: Campus Mariakerke
 Prijs: Gratis
-
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+PROGRAMMA
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+${programmeString}
 `
 }
+
+
+
+
+
 
 
 
