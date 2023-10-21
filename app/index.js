@@ -344,53 +344,64 @@ const meetups = [
         ];
 
 
-        function generateStringForTime (programme) {
-          return programme.map(timeStamp => {
-            const { title, from, to } = timeStamp;
-          let tmpStr = `${new Date(from).getHours()}:${new Date(from).getMinutes()} - ${new Date(to).getHours()}:${new Date(to).getMinutes()} ${title}`;
-          return tmpStr;
-        }).join('\n')}
-        const programmeString = generateStringForTime(meetups[0].programme)
+function generateStringForTime (programme) {
+  return programme.map(timeStamp => {
+   const { title, from, to } = timeStamp;
+   let tmpStr = `${new Date(from).getHours()}:${new Date(from).getMinutes()} - ${new Date(to).getHours()}:${new Date(to).getMinutes()} ${title}`;
+  return tmpStr;
+  }).join('\n')}
+
+const programmeString = generateStringForTime(meetups[0].programme)
       
-        function generateStringForTime1 (programme) {
-          return programme.map(timeStamp => {
-            const { title, from, to } = timeStamp;
-          let tmpStr = `${new Date(from).getHours()}:${new Date(from).getMinutes()} - ${new Date(to).getHours()}:${new Date(to).getMinutes()} ${title}`;
-          return tmpStr;
-        }).join('\n')}
-        const programmeString1 = generateStringForTime(meetups[1].programme)
+function generateStringForTime1 (programme) {
+  return programme.map(timeStamp => {
+   const { title, from, to } = timeStamp;
+   let tmpStr = `${new Date(from).getHours()}:${new Date(from).getMinutes()} - ${new Date(to).getHours()}:${new Date(to).getMinutes()} ${title}`;
+  return tmpStr;
+  }).join('\n')}
+
+const programmeString1 = generateStringForTime(meetups[1].programme)
+        
+ function generatePlace(location) {
+  const { street, number, postalCode, city } = location.address;
+  let tmpStr = `${street}\n${number}\n${postalCode}\n${city}`;
+ return tmpStr}
+
+ const location1 = generatePlace(meetups[0].location);
+
+ function generatePlace2(location) {
+  const { street, number, postalCode, city } = location.address;
+  let tmpStr = `${street}\n${number}\n${postalCode}\n${city}`;
+ return tmpStr}
+ const location2 = generatePlace2(meetups[1].location);
+
 
         
        
 
 
-function generateStringForMeetup (meetup, index) {
+function generateStringForMeetup (meetups) {
   return `
 ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║ Meetup 0${index + 1} | ${meetup.title}                                                                                                          ║
+║ Meetup 01 | ${meetups[0].title}                                                                                                          ║
 ╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 Datum: 17-05-2023
 Locatie: Campus Mariakerke
 Prijs: Gratis
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+${meetups[0].description}
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 PROGRAMMA
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ${programmeString}
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+${location1}
 `
 }
 
 
 
-
-
-
-
-
-function generateStringForMeetups(meetups){
-  return meetups.map((meetup, index) => generateStringForMeetup(meetup, index)).join('\n\n\n');
-}
-const output = generateStringForMeetups(meetups);
-console.log(output);
+console.log(generateStringForMeetup(meetups));
 
 
 
