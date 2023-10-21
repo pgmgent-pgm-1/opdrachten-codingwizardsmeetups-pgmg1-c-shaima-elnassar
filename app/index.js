@@ -19,11 +19,11 @@ const meetups = [
       isExternalEvent: false,
       organizers:[{
       name:  'Coding Wizards',
-      website: 'Website:       https://www.pgm.gent/codingwizards',
+      
       socials: {
-        website: 'Website:       https://www.pgm.gent/codingwizards',
-        linkedIn: 'LinkedIn:      https://www.linkedin.com/company/28878545/',
-        instagram: 'Instagram:     https://www.instagram.com/programmeren.ahs/',
+        website:  'https://www.pgm.gent/codingwizards',
+        linkedIn: 'https://www.linkedin.com/company/28878545/',
+        instagram: 'https://www.instagram.com/programmeren.ahs/',
       }
     }],
     landingPageLink: 'https://www.iodigital.com/nl/insights/events/tech-she-her',
@@ -183,23 +183,17 @@ const meetups = [
           isExternalEvent: true,
           organizers: [{
           name: 'iO',
-          website: 'Website:   https://www.iodigital.com/nl/home',
+          
           socials: {
-            linkedIn: 'LinkedIn:  https://www.linkedin.com/company/iodigital-com/',
-            instagram: 'Instagram: https://www.instagram.com/iodigital_com/ ',
-            youtube: 'Youtube:   https://www.youtube.com/iOdigital-com ',
-            facebook: 'Facebook:  https://www.facebook.com/iodigitalcom/',
-            x: 'X:         https://twitter.com/iodigital_com',
+            website: 'https://www.iodigital.com/nl/home',
+            linkedIn: 'https://www.linkedin.com/company/iodigital-com/',
+            instagram: 'https://www.instagram.com/iodigital_com/ ',
+            youtube: 'https://www.youtube.com/iOdigital-com ',
+            facebook: 'https://www.facebook.com/iodigitalcom/',
+            x: 'https://twitter.com/iodigital_com',
           }
           },
-          {
-            name: 'Coding Wizards',
-            website: 'https://www.pgm.gent/codingwizards',
-            socials: {
-            LinkedIn: 'https://www.linkedin.com/company/28878545/',
-            Instagram: 'https://www.instagram.com/programmeren.ahs/ ',
-          }
-          }
+          
           ],
           landingPageLink: 'https://www.iodigital.com/nl/insights/events/tech-she-her ',
           registrationLink: 'https://www.google.com/url?q=https%3A%2F%2Fwww.iodigital.com%2Fnl%2Finsights%2Fevents%2Ftech-she-her&sa=D&sntz=1&usg=AOvVaw20L2EkTSpkHQq5fJr_naWm ',
@@ -376,6 +370,7 @@ const programmeString1 = generateStringForTime(meetups[1].programme)
   const { street, number, postalCode, city } = location.address;
   let tmpStr = `${street}\n${number}\n${postalCode}\n${city}`;
  return tmpStr;}
+
  const location2 = generatePlace2(meetups[1].location);
 
 
@@ -389,14 +384,35 @@ const programmeString1 = generateStringForTime(meetups[1].programme)
 
 const organizersString = generateStringOrganizers(meetups[0].organizers)
 
-function generateStringOrganizers (organizers) {
+function generateStringOrganizers2 (organizers) {
   return organizers.map(item => {
    const { name } = item;
    let tmpStr = `${name}`;
   return tmpStr;
   })}
 
-const organizersString1 = generateStringOrganizers(meetups[1].organizers)
+const organizersString1 = generateStringOrganizers2(meetups[1].organizers)
+
+
+function generateStringWebsites(organizers) {
+  const websites = organizers.map((organizer) => {
+    const { website, linkedIn, instagram } = organizer.socials;
+    return `Website:   ${website}\nLinkedIn:  ${linkedIn}\nInstagram: ${instagram}\n`;
+  });
+
+  return websites;
+}
+const website1 = generateStringWebsites(meetups[0].organizers)
+
+function generateStringWebsites1(organizers) {
+  const websites2 = organizers.map((organizer) => {
+    const { website, linkedIn, instagram,youtube, facebook, x } = organizer.socials;
+    return `Website:   ${website}\nLinkedIn:  ${linkedIn}\nInstagram: ${instagram}\nyoutube:   ${youtube}\nfacebook:  ${facebook}\nx:         ${x}`;
+  });
+
+  return websites2;
+}
+const website2 = generateStringWebsites1(meetups[1].organizers)
 
        
 
@@ -421,7 +437,10 @@ ${location1}
 ORGANIZERS
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ${organizersString}
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+----------------------------------------------------------------------------------------------------------------------------------------
+${website1}
+
+
 `
 }
 
