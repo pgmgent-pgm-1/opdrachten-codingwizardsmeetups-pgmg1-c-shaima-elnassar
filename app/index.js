@@ -93,7 +93,8 @@ const meetups = [
           name:  'Lennert De Ryck',
           jobDescription: 'Front-end developer',
           company: 'Sweet Mustard',
-        }
+        },
+        description:'In real-world React-applicaties spelen formulieren een cruciale rol bij het verzamelen van gegevens van gebruikers en het mogelijk maken van interactie met de applicatie. Het beheren van formulieren in React kan echter een uitdaging vormen vanwege de noodzaak om de staat van de formulierelementen te synchroniseren met de componentstaat. Dit omvat het gebruik van gecontroleerde componenten om gebruikersinvoer vast te leggen en te verwerken. Formuliervalidatie is ook een belangrijk aspect waarbij ontwikkelaars moeten zorgen voor de juiste invoervalidatie en het geven van terugkoppeling aan gebruikers bij onjuiste gegevens. Bovendien kunnen React-hooks zoals useState en useEffect worden ingezet om de staat van complexe formulieren efficiënt te beheren. In real-world React-applicaties is het begrijpen en effectief beheren van formulieren essentieel om een vlotte gebruikerservaring te bieden en nauwkeurige gegevens te verzamelen.'
       },
       {
         title: 'Ambassadeursschap / What\s Next',
@@ -414,6 +415,33 @@ function generateStringWebsites1(organizers) {
 }
 const website2 = generateStringWebsites1(meetups[1].organizers)
 
+
+
+function generateOrganizer(index1, index2) {
+  const speakers = meetups[index1].programme[index2].speakers;
+  if (speakers) {
+    const { name, jobDescription, company } = speakers;
+    return `${name}, ${jobDescription} | ${company}`;
+  } else {
+    return '';
+  }
+}
+
+const speaker1 = generateOrganizer(0, 2);
+
+function generateOrganizer2(index1, index2) {
+  const speakers = meetups[index1].programme[index2].speakers;
+  if (speakers) {
+    const { name, jobDescription, company } = speakers;
+    return `${name}, ${jobDescription} | ${company}`;
+  } else {
+    return '';
+  }
+}
+
+const speaker2 = generateOrganizer2(0, 5);
+
+
        
 
 
@@ -439,7 +467,16 @@ ORGANIZERS
 ${organizersString}
 ----------------------------------------------------------------------------------------------------------------------------------------
 ${website1}
-
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Lees alvast meer over onze sprekers
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+${speaker1}
+----------------------------------------------------------------------------------------------------------------------------------------
+${meetups[0].programme[2].description}
+----------------------------------------------------------------------------------------------------------------------------------------
+${speaker2}
+----------------------------------------------------------------------------------------------------------------------------------------
+${meetups[0].programme[5].description}
 
 `
 }
@@ -447,7 +484,3 @@ ${website1}
 
 
 console.log(generateStringForMeetup(meetups));
-
-
-
-
